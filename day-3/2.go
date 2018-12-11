@@ -57,5 +57,19 @@ func main() {
             }
         }
     }
-    fmt.Println(fabric)
+    
+    for id:=1;id<1306;id++{ 
+        m := make(map[int]bool)
+        for a:=0;a<1000;a++{
+            for b:=0;b<1000;b++{
+                length := len(fabric[a][b])
+                if fabric[a][b][id] {
+                    m[length] = true
+                }
+            }
+        }
+        if len(m) == 1 && m[1] {
+            fmt.Println(id)
+        }
+    }
 }
