@@ -96,25 +96,17 @@ func main() {
         }
     }
     selected_guard := 0
+    minute := 0
     sleep := 0
     for i := range roster {
-        sum := 0
-        for _, num := range roster[i]{
-            sum += num
-        }
-        if sum > sleep {
-            selected_guard = i
-            sleep = sum
-        }
-    }
-    minute := 0
-    num := 0
-    for i, n := range roster[selected_guard] {
-        if n > num {
-            minute = i
-            num = n
+        for j, num := range roster[i]{
+            if num > sleep {
+                sleep = num
+                minute = j
+                selected_guard = i
+            }
         }
     }
-    fmt.Print("Guard: ", selected_guard, " Minute: ", minute, "\n")
+    fmt.Print("Guard: ", selected_guard, " Minute: ", minute, " Times asleep: ", sleep, "\n")
     fmt.Println(selected_guard*minute)
 }
