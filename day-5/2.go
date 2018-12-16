@@ -38,10 +38,23 @@ func main() {
     }
 
     polymer := string(f)
+    abc := "abcdefghijklmnopqrstuwvxyz"
+    shortest := 10000000000000
+    for i := range(abc) {
+        fmt.Println("removing ", string(abc[i]), string(abc[i]-32))
 
-    b := true
-    for b {
-        polymer, b = destroy_polymer(polymer)
+        p := strings.Replace(polymer, string(abc[i]), "", -1)
+        p = strings.Replace(p, string(abc[i]-32), "", -1)
+
+        b := true
+        for b {
+            p, b = destroy_polymer(p)
+        }
+        length := len(p)-1
+        fmt.Println(length)
+        if length < shortest {
+            shortest = length
+        }
     }
-    fmt.Println(len(polymer)-1)
+    fmt.Println("Shortest polymer: ", shortest)
 }
